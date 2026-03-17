@@ -1,6 +1,6 @@
 {
   "course_slug": "claude-cowork-office",
-  "current_stage": "06-content",
+  "current_stage": "07-tests",
   "created_at": "2026-03-06T12:00:00Z",
   "stages": {
     "01-bootstrap": {
@@ -17,6 +17,14 @@
         "quality_verdict": "PASS"
       }
     },
+    "03-prd": {
+      "status": "approved",
+      "completed_at": "2026-03-07T14:00:00Z",
+      "metadata": {
+        "version": "v4",
+        "key_change": "MCP integration as core architecture"
+      }
+    },
     "04-structure": {
       "status": "approved",
       "completed_at": "2026-03-08T00:00:00Z",
@@ -24,14 +32,6 @@
         "modules": 5,
         "lessons": 19,
         "total_duration": "~2.5 hours"
-      }
-    },
-    "03-prd": {
-      "status": "approved",
-      "completed_at": "2026-03-07T14:00:00Z",
-      "metadata": {
-        "version": "v4",
-        "key_change": "MCP integration as core architecture"
       }
     },
     "05-module-research": {
@@ -42,6 +42,16 @@
         "modules_skipped": 1,
         "total_sources": 79,
         "model": "sonar-pro"
+      }
+    },
+    "06-content": {
+      "status": "completed",
+      "completed_at": "2026-03-17T00:00:00Z",
+      "tokens": 95000,
+      "tokens_estimated": true,
+      "metadata": {
+        "modules_generated": 5,
+        "lessons_total": 20
       }
     }
   }

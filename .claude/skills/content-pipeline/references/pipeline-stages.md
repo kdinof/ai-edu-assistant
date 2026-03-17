@@ -57,13 +57,16 @@
 - **Шаблон:** `templates/lesson.md`
 - **Reference:** `foundation/brand_tone_of_voice.md`
 
-## Stage 07: Tests (Sprint 2)
+## Stage 07: Tests
 
 - **ID:** `07-tests`
-- **Вход:** `06-content/`
-- **Выход:** `07-tests/module-{nn}-test.md`
+- **Вход:** `04-structure.md` (learning outcomes) + `06-content/module-{nn}/lesson-{nn}.md`
+- **Выход:** `07-tests/module-{nn}/lesson-{nn}-test.md` — тест к каждому уроку
 - **Инструкции:** `stages/07-tests.md`
 - **Шаблон:** `templates/test.md`
+- **Параметры:** 3-5 вопросов на урок, проходной балл 70%
+- **Типы вопросов:** single_choice, multiple_choice, scenario, find_error
+- **Human Gate:** Нет
 
 ## Stage 08: Translation (Sprint 2)
 
@@ -86,7 +89,9 @@
       "status": "pending | in_progress | completed | approved | review_pending | revision | rejected",
       "started_at": "ISO 8601 datetime",
       "completed_at": "ISO 8601 datetime (optional)",
-      "feedback": "string (optional, user feedback for revisions)"
+      "feedback": "string (optional, user feedback for revisions)",
+      "tokens": "number (total tokens used by this stage)",
+      "tokens_estimated": "boolean (optional, true if tokens are approximate)"
     }
   }
 }
