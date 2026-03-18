@@ -68,12 +68,21 @@
 - **Типы вопросов:** single_choice, multiple_choice, scenario, find_error
 - **Human Gate:** Нет
 
-## Stage 08: Translation (Sprint 2)
+## Stage 08: Lesson Summaries
 
-- **ID:** `08-translation`
-- **Вход:** Все файлы stages 04-07
+- **ID:** `08-lesson-summaries`
+- **Вход:** `06-content/module-{nn}/lesson-{nn}.md` — контент уроков
+- **Выход:** `06-content/module-{nn}/lesson-{nn}_summary.md` — текстовые описания (рекапы) к каждому уроку
+- **Инструкции:** `stages/08-lesson-summaries.md`
+- **Агент:** `lesson-summary-writer`
+- **Human Gate:** Нет
+
+## Stage 09: Translation (Sprint 2)
+
+- **ID:** `09-translation`
+- **Вход:** Все файлы stages 04-08
 - **Выход:** `08-translations/uz/`
-- **Инструкции:** `stages/08-translation.md`
+- **Инструкции:** `stages/09-translation.md`
 
 ---
 

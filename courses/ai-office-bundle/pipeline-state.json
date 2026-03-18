@@ -1,0 +1,40 @@
+{
+  "course_slug": "ai-office-bundle",
+  "current_stage": "04-structure",
+  "created_at": "2026-03-17T12:00:00Z",
+  "stages": {
+    "01-bootstrap": {
+      "status": "completed",
+      "completed_at": "2026-03-17T12:15:00Z",
+      "tokens": 3500,
+      "tokens_estimated": true
+    },
+    "02-research": {
+      "status": "completed",
+      "completed_at": "2026-03-17T12:45:00Z",
+      "tokens": 85000,
+      "tokens_estimated": true,
+      "metadata": {
+        "aspects_count": 6,
+        "sources_count": 102,
+        "quality_verdict": "PASS"
+      }
+    },
+    "03-prd": {
+      "status": "approved",
+      "completed_at": "2026-03-18T00:00:00Z",
+      "tokens": 12000,
+      "tokens_estimated": true
+    },
+    "04-structure": {
+      "status": "review_pending",
+      "tokens": 8500,
+      "tokens_estimated": true,
+      "metadata": {
+        "modules": 5,
+        "lessons": 21,
+        "total_duration": "3 часа"
+      }
+    }
+  }
+}
