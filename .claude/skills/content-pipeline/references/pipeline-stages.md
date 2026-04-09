@@ -4,7 +4,7 @@
 
 - **ID:** `01-bootstrap`
 - **Вход:** Идея курса (свободный текст от пользователя)
-- **Выход:** `01-bootstrap.md` — заполненный опросник
+- **Выход:** `01-bootstrap.md` — заполненный опросник + `references/links.md` (опционально)
 - **Инструкции:** `stages/01-bootstrap.md`
 - **Шаблон:** `templates/bootstrap-questionnaire.md`
 - **Human Gate:** Нет
@@ -12,7 +12,7 @@
 ## Stage 02: Deep Research
 
 - **ID:** `02-research`
-- **Вход:** `01-bootstrap.md`
+- **Вход:** `01-bootstrap.md` + `references/*` (если есть)
 - **Выход:** `02-research.md` — многоаспектный отчёт с синтезом и quality assessment
 - **Инструкции:** `stages/02-research.md`
 - **Шаблон:** `templates/research-report.md`
@@ -23,7 +23,7 @@
 ## Stage 03: PRD
 
 - **ID:** `03-prd`
-- **Вход:** `01-bootstrap.md` + `02-research.md`
+- **Вход:** `01-bootstrap.md` + `02-research.md` + `references/*` (если есть)
 - **Выход:** `03-prd.md`
 - **Инструкции:** `stages/03-prd.md`
 - **Шаблон:** `templates/prd.md`
@@ -43,7 +43,7 @@
 ## Stage 05: Module Research (Sprint 2)
 
 - **ID:** `05-module-research`
-- **Вход:** `04-structure.md` (approved)
+- **Вход:** `04-structure.md` (approved) + `references/*` (если есть)
 - **Выход:** `05-module-research/module-{nn}.md`
 - **Инструкции:** `stages/05-module-research.md`
 - **Зависимости:** Perplexity API, параллельные Agent subagents
@@ -51,7 +51,7 @@
 ## Stage 06: Content Generation (Sprint 2)
 
 - **ID:** `06-content`
-- **Вход:** `04-structure.md` + `05-module-research/`
+- **Вход:** `04-structure.md` + `05-module-research/` + `references/*` (если есть)
 - **Выход:** `06-content/module-{nn}/lesson-{nn}.md`
 - **Инструкции:** `stages/06-content.md`
 - **Шаблон:** `templates/lesson.md`
@@ -93,6 +93,11 @@
   "course_slug": "string",
   "current_stage": "string (stage ID)",
   "created_at": "ISO 8601 datetime",
+  "has_references": "boolean (optional, default false)",
+  "references": {
+    "files_count": "number (optional)",
+    "links_count": "number (optional)"
+  },
   "stages": {
     "{stage_id}": {
       "status": "pending | in_progress | completed | approved | review_pending | revision | rejected",

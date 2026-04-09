@@ -1,6 +1,6 @@
 ---
 description: Сгенерировать тесты для уроков модуля
-allowed-tools: Read, Write, Edit, Glob, AskUserQuestion
+allowed-tools: Read, Write, Edit, Glob, Agent, AskUserQuestion
 ---
 
 # /lesson-tests — Генерация тестов для уроков

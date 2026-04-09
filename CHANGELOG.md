@@ -1,5 +1,24 @@
 # Changelog
 
+## [2026-04-09]
+
+### Добавлено
+- Новый агент `git-changelog-push` — автоматизирует git commit, обновление CHANGELOG и push
+- Поддержка референсных материалов в pipeline: папка `references/` и `links.md` на этапе Bootstrap, чтение файлов и ссылок во всех последующих этапах (02-06)
+- Stage 07 (Tests): параллельная генерация тестов через отдельные Agent subagents на каждый модуль
+
+### Изменено
+- Stage 01 (Bootstrap): добавлен шаг 5 — сбор референсных материалов (файлы + ссылки), обновление `pipeline-state.json` с `has_references`
+- Stage 02 (Research): анализ референсов пользователя перед Perplexity research, фокус запросов на пробелы
+- Stage 03 (PRD): референсы пользователя как приоритетный источник для scope и learning outcomes
+- Stage 05 (Module Research): учёт референсов при генерации запросов для субагентов
+- Stage 06 (Content): референсы как основной источник контента урока, research — дополнение
+- Stage 07 (Tests): переработан алгоритм — параллельные агенты вместо последовательной обработки
+- SKILL.md: инициализация папки `references/` и поля `has_references` при создании курса
+- `pipeline-stages.md`: обновлены входы этапов 02, 03, 05, 06; расширена схема `pipeline-state.json`
+- Команда `lesson-tests`: добавлен инструмент `Agent` в список `allowed-tools`
+- `.gitignore`: добавлены `courses/` и `docs/`
+
 ## 2026-03-23
 
 **Add CHANGELOG, update README with upgrade instructions**

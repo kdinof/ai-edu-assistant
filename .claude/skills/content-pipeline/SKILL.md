@@ -61,7 +61,7 @@ description: "AI Content Generation Pipeline для курсов OSNOVA. Исп�
 Если пользователь предоставил идею курса:
 
 1. Спроси slug для курса (латиница, kebab-case). Пример: `ai-visual-creator`
-2. Создай папку `courses/{slug}/`
+2. Создай папку `courses/{slug}/` и подпапку `courses/{slug}/references/`
 3. Создай `pipeline-state.json`:
 
 ```json
@@ -69,6 +69,7 @@ description: "AI Content Generation Pipeline для курсов OSNOVA. Исп�
   "course_slug": "{slug}",
   "current_stage": "01-bootstrap",
   "created_at": "{ISO datetime}",
+  "has_references": false,
   "stages": {}
 }
 ```

@@ -16,6 +16,11 @@
 - `courses/{slug}/01-bootstrap.md`
 - `courses/{slug}/02-research.md`
 - `foundation/course-design-values.md` (ценности OSNOVA при создании курсов)
+- Если `has_references: true` в `pipeline-state.json`:
+  - Все файлы из `courses/{slug}/references/` (через Glob, Read)
+  - `courses/{slug}/references/links.md` (если есть — WebFetch каждую ссылку)
+
+**Приоритет источников:** Если есть референсы пользователя — они являются ОСНОВНЫМ источником для формирования scope, топиков, модулей и learning outcomes. Research используется для заполнения пробелов, рыночного контекста и конкурентного анализа.
 
 ### 2. Прочитай шаблон
 

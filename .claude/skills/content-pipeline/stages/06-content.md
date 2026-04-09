@@ -6,6 +6,7 @@
 
 ## Вход
 - `04-structure.md` + `05-module-research/`
+- Если `has_references: true` в `pipeline-state.json`: файлы из `courses/{slug}/references/`
 
 ## Выход
 - `06-content/module-{nn}/lesson-{nn}.md`
@@ -14,6 +15,12 @@
 1. Последовательно по модулям
 2. Для каждого урока использовать шаблон `templates/lesson.md`
 3. Reference: `foundation/brand_tone_of_voice.md`
+4. Если есть референсы пользователя:
+   - Прочитай все файлы из `courses/{slug}/references/` и `links.md`
+   - Референсы = ОСНОВНОЙ источник контента урока (данные, примеры, формулировки)
+   - Module research = дополнение (свежие примеры, актуализация, расширение)
+   - При генерации видео-скрипта и текста: приоритет данных и формулировок из референсов
+   - Если референс противоречит research — используй данные из референса
 
 ## Post-step: Fact-Check
 
