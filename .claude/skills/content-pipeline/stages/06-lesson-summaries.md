@@ -1,4 +1,4 @@
-# Stage 08: Lesson Summaries
+# Stage 06: Lesson Summaries
 
 ## Задача
 
@@ -6,11 +6,11 @@
 
 ## Вход
 
-- `06-content/module-{nn}/lesson-{nn}.md` — контент уроков
+- `04-content/module-{nn}/lesson-{nn}.md` — контент уроков
 
 ## Выход
 
-- `06-content/module-{nn}/lesson-{nn}_summary.md` — текстовое описание к каждому уроку
+- `04-content/module-{nn}/lesson-{nn}_summary.md` — текстовое описание к каждому уроку
 
 ## Подход
 
@@ -19,12 +19,12 @@
 ```
 Agent(
   subagent_type: "lesson-summary-writer",
-  prompt: "Сгенерируй текстовые описания для всех уроков курса {course_slug}. Директория контента: courses/{course_slug}/06-content/"
+  prompt: "Сгенерируй текстовые описания для всех уроков курса {course_slug}. Директория контента: courses/{course_slug}/04-content/"
 )
 ```
 
 Агент автоматически:
-1. Сканирует все модули и уроки в `06-content/`
+1. Сканирует все модули и уроки в `04-content/`
 2. Запускает параллельные sub-agents (один на урок)
 3. Генерирует структурированные описания по шаблону
 4. Сохраняет файлы рядом с контентом уроков

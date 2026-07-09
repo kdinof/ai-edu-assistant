@@ -4,85 +4,65 @@
 
 - **ID:** `01-bootstrap`
 - **Вход:** Идея курса (свободный текст от пользователя)
-- **Выход:** `01-bootstrap.md` — заполненный опросник + `references/links.md` (опционально)
+- **Выход:** `01-bootstrap.md` — заполненный опросник + заполненная `references/` (обязательно)
 - **Инструкции:** `stages/01-bootstrap.md`
 - **Шаблон:** `templates/bootstrap-questionnaire.md`
 - **Human Gate:** Нет
 
-## Stage 02: Deep Research
+## Stage 02: PRD
 
-- **ID:** `02-research`
-- **Вход:** `01-bootstrap.md` + `references/*` (если есть)
-- **Выход:** `02-research.md` — многоаспектный отчёт с синтезом и quality assessment
-- **Инструкции:** `stages/02-research.md`
-- **Шаблон:** `templates/research-report.md`
-- **Зависимости:** Perplexity API (`.claude/skills/perplexity-research/research.py`), параллельные Task() субагенты (один на аспект)
-- **Human Gate:** Нет (автоматический quality gate: PASS/WARN/FAIL)
-- **Metadata в state:** `aspects_count`, `sources_count`, `quality_verdict`
-
-## Stage 03: PRD
-
-- **ID:** `03-prd`
-- **Вход:** `01-bootstrap.md` + `02-research.md` + `references/*` (если есть)
-- **Выход:** `03-prd.md`
-- **Инструкции:** `stages/03-prd.md`
+- **ID:** `02-prd`
+- **Вход:** `01-bootstrap.md` + `references/*`
+- **Выход:** `02-prd.md`
+- **Инструкции:** `stages/02-prd.md`
 - **Шаблон:** `templates/prd.md`
-- **Reference:** `foundation/course-design-values.md`
 - **Human Gate:** Gate 1 — PRD Review (Утвердить / Правки / Отклонить)
 
-## Stage 04: Structure
+## Stage 03: Structure
 
-- **ID:** `04-structure`
-- **Вход:** `03-prd.md` (approved) + `02-research.md`
-- **Выход:** `04-structure.md`
-- **Инструкции:** `stages/04-structure.md`
+- **ID:** `03-structure`
+- **Вход:** `02-prd.md` (approved) + `references/*`
+- **Выход:** `03-structure.md`
+- **Инструкции:** `stages/03-structure.md`
 - **Шаблон:** `templates/course-structure.md`
-- **Reference формат:** шаблон `templates/course-structure.md`
 - **Human Gate:** Gate 2 — Методолог Review (Утвердить / Правки / Отклонить)
 
-## Stage 05: Module Research (Sprint 2)
+## Stage 04: Content Generation
 
-- **ID:** `05-module-research`
-- **Вход:** `04-structure.md` (approved) + `references/*` (если есть)
-- **Выход:** `05-module-research/module-{nn}.md`
-- **Инструкции:** `stages/05-module-research.md`
-- **Зависимости:** Perplexity API, параллельные Agent subagents
-
-## Stage 06: Content Generation (Sprint 2)
-
-- **ID:** `06-content`
-- **Вход:** `04-structure.md` + `05-module-research/` + `references/*` (если есть)
-- **Выход:** `06-content/module-{nn}/lesson-{nn}.md`
-- **Инструкции:** `stages/06-content.md`
+- **ID:** `04-content`
+- **Вход:** `03-structure.md` (approved) + `references/*`
+- **Выход:** `04-content/module-{nn}/lesson-{nn}.md`
+- **Инструкции:** `stages/04-content.md`
 - **Шаблон:** `templates/lesson.md`
-- **Reference:** `foundation/brand_tone_of_voice.md`
+- **Human Gate:** Нет
 
-## Stage 07: Tests
+## Stage 05: Tests
 
-- **ID:** `07-tests`
-- **Вход:** `04-structure.md` (learning outcomes) + `06-content/module-{nn}/lesson-{nn}.md`
-- **Выход:** `07-tests/module-{nn}/lesson-{nn}-test.md` — тест к каждому уроку
-- **Инструкции:** `stages/07-tests.md`
+- **ID:** `05-tests`
+- **Вход:** `03-structure.md` (learning outcomes) + `04-content/module-{nn}/lesson-{nn}.md`
+- **Выход:** `05-tests/module-{nn}/lesson-{nn}-test.md` — тест к каждому уроку
+- **Инструкции:** `stages/05-tests.md`
 - **Шаблон:** `templates/test.md`
 - **Параметры:** 3-5 вопросов на урок, проходной балл 70%
 - **Типы вопросов:** single_choice, multiple_choice, scenario, find_error
 - **Human Gate:** Нет
 
-## Stage 08: Lesson Summaries
+## Stage 06: Lesson Summaries
 
-- **ID:** `08-lesson-summaries`
-- **Вход:** `06-content/module-{nn}/lesson-{nn}.md` — контент уроков
-- **Выход:** `06-content/module-{nn}/lesson-{nn}_summary.md` — текстовые описания (рекапы) к каждому уроку
-- **Инструкции:** `stages/08-lesson-summaries.md`
+- **ID:** `06-lesson-summaries`
+- **Вход:** `04-content/module-{nn}/lesson-{nn}.md` — контент уроков
+- **Выход:** `04-content/module-{nn}/lesson-{nn}_summary.md` — текстовые описания (рекапы) к каждому уроку, рядом с уроком
+- **Инструкции:** `stages/06-lesson-summaries.md`
 - **Агент:** `lesson-summary-writer`
 - **Human Gate:** Нет
 
-## Stage 09: Translation (Sprint 2)
+## Stage 07: Translation (опционально)
 
-- **ID:** `09-translation`
-- **Вход:** Все файлы stages 04-08
-- **Выход:** `08-translations/uz/`
-- **Инструкции:** `stages/09-translation.md`
+- **ID:** `07-translation`
+- **Вход:** Артефакты stages 03-06 + целевые языки курса
+- **Выход:** `07-translations/{lang}/`
+- **Инструкции:** `stages/07-translation.md`
+- **Human Gate:** Нет
 
 ---
 
@@ -93,7 +73,7 @@
   "course_slug": "string",
   "current_stage": "string (stage ID)",
   "created_at": "ISO 8601 datetime",
-  "has_references": "boolean (optional, default false)",
+  "has_references": "boolean (always true after bootstrap — references are mandatory)",
   "references": {
     "files_count": "number (optional)",
     "links_count": "number (optional)"

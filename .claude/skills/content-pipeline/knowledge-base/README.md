@@ -1,17 +1,17 @@
 # Knowledge Base — Reference файлы
 
-Pipeline использует reference-файлы из корня проекта для обеспечения качества и соответствия стандартам OSNOVA.
+Pipeline может опираться на reference-файлы из корня проекта для обеспечения качества и соответствия принятым в проекте стандартам. Эти файлы опциональны: если их нет, pipeline опирается на шаблоны из `templates/`.
 
-## Текущие references
+## Какие references можно добавить
 
-| Reference | Путь | Используется в |
+| Reference | Рекомендуемый путь | Используется в |
 |-----------|------|----------------|
-| Ценности создания курсов | `foundation/course-design-values.md` | Stage 03 (PRD), Stage 04 |
-| Tone of voice | `foundation/brand_tone_of_voice.md` | Stage 06 (Content) |
+| Ценности / принципы создания курсов | `foundation/course-design-values.md` | Stage 02 (PRD), Stage 03 (Structure) |
+| Tone of voice бренда | `foundation/brand_tone_of_voice.md` | Stage 04 (Content) |
 
 ## Как добавить новый reference курс
 
-1. Убедись что курс в формате OSNOVA (паспорт + модули + уроки с буллетами)
+1. Убедись что курс в формате шаблона `templates/course-structure.md` (паспорт + модули + уроки с буллетами)
 2. Добавь путь к файлу в таблицу выше
 3. Обнови stage instructions, которые должны его использовать
 4. В stage instructions добавь `Read` этого файла перед генерацией

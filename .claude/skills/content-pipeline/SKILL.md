@@ -1,11 +1,11 @@
 ---
 name: content-pipeline
-description: "AI Content Generation Pipeline для курсов OSNOVA. Используй когда нужно: (1) создать новый курс от идеи, (2) сгенерировать контент через pipeline, (3) возобновить paused pipeline."
+description: "AI Content Generation Pipeline для образовательных курсов. Используй когда нужно: (1) создать новый курс от идеи, (2) сгенерировать контент через pipeline, (3) возобновить paused pipeline."
 ---
 
 # Content Pipeline — Оркестратор
 
-Пошаговый pipeline создания курсов: Идея -> Bootstrap -> Research -> PRD -> [Review] -> Структура -> [Review] -> Content -> Tests -> Lesson Summaries -> Translation.
+Пошаговый pipeline создания курсов: Идея -> Bootstrap (+референсы) -> PRD -> [Review] -> Структура -> [Review] -> Content -> Tests -> Lesson Summaries -> Translation (опционально).
 
 ## Как работает
 
@@ -24,17 +24,15 @@ description: "AI Content Generation Pipeline для курсов OSNOVA. Исп�
 ━━━ CONTENT PIPELINE: {course_slug} ━━━
 
   ✅ 01 Bootstrap              12.5K tokens
-  ✅ 02 Deep Research          145.2K tokens
-  🔄 03 PRD                ◄ текущий этап
-  ⬜ 04 Structure
-  ⬜ 05 Module Research
-  ⬜ 06 Content Generation
-  ⬜ 07 Tests
-  ⬜ 08 Lesson Summaries
-  ⬜ 09 Translation
+  🔄 02 PRD                ◄ текущий этап
+  ⬜ 03 Structure
+  ⬜ 04 Content Generation
+  ⬜ 05 Tests
+  ⬜ 06 Lesson Summaries
+  ⬜ 07 Translation
 
   ──────────────────────────────────
-  Потрачено: 157.7K tokens · ~$2.35
+  Потрачено: 12.5K tokens · ~$0.19
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -74,7 +72,7 @@ description: "AI Content Generation Pipeline для курсов OSNOVA. Исп�
 }
 ```
 
-4. Перейди к Stage 01
+4. Перейди к Stage 01. **Папка `references/` обязательна**: Stage 01 (Bootstrap) не считается завершённым, пока пользователь не загрузит туда хотя бы один файл (или ссылки в `references/links.md`) — без референсов pipeline дальше не идёт
 
 ### Возобновление
 
@@ -85,19 +83,34 @@ description: "AI Content Generation Pipeline для курсов OSNOVA. Исп�
 3. Если статус `review_pending` — покажи артефакт и спроси решение (Утвердить / Правки / Отклонить)
 4. Перейди к соответствующему stage
 
+### Курсы со старой нумерацией стейджей
+
+Если `current_stage` в `pipeline-state.json` использует старый ID (курс создан до перенумерации), примени мэппинг:
+
+| Старый ID | Что делать |
+|-----------|-----------|
+| `02-research` | Research удалён из pipeline. Если референсы уже загружены — продолжай с `02-prd`. Если референсов нет — вернись к `01-bootstrap` за референсами |
+| `03-prd` | Продолжай как `02-prd` |
+| `04-structure` | Продолжай как `03-structure` |
+| `05-module-research` | Module Research удалён. Продолжай с `04-content` |
+| `06-content` | Продолжай как `04-content` |
+| `07-tests` | Продолжай как `05-tests` |
+| `08-lesson-summaries` | Продолжай как `06-lesson-summaries` |
+| `09-translation` | Продолжай как `07-translation` |
+
+**Важно:** артефакты старых курсов лежат по старым путям и именам файлов (`03-prd.md`, `04-structure.md`, `06-content/`, `07-tests/`, `08-translations/` и т.д.) — при возобновлении читай их по этим старым именам, не переименовывай задним числом.
+
 ## Порядок стейджей
 
-| # | Stage | Human Gate | Sprint |
-|---|-------|-----------|--------|
-| 01 | Bootstrap | - | 1 |
-| 02 | Deep Research | - | 1 |
-| 03 | PRD | Gate 1: PRD Review | 1 |
-| 04 | Structure | Gate 2: Методолог Review | 1 |
-| 05 | Module Research | - | 2 |
-| 06 | Content Generation | - | 2 |
-| 07 | Tests | - | 2 |
-| 08 | Lesson Summaries | - | 2 |
-| 09 | Translation | - | 2 |
+| # | Stage | Human Gate |
+|---|-------|-----------|
+| 01 | Bootstrap | - |
+| 02 | PRD | Gate 1: PRD Review |
+| 03 | Structure | Gate 2: Методолог Review |
+| 04 | Content Generation | - |
+| 05 | Tests | - |
+| 06 | Lesson Summaries | - |
+| 07 | Translation (опционально) | - |
 
 ## Выполнение стейджа
 
@@ -125,7 +138,7 @@ description: "AI Content Generation Pipeline для курсов OSNOVA. Исп�
 
 После завершения каждого стейджа записывай количество использованных токенов в поле `tokens`:
 
-- **Agent subagents** (research, translation, fact-check): бери `total_tokens` из результата Agent tool
+- **Agent subagents** (translation, fact-check): бери `total_tokens` из результата Agent tool
 - **Основной контекст** (bootstrap, PRD, structure, content, tests): оцени приблизительно — сумма токенов всех прочитанных файлов + сгенерированного контента. Для оценки: 1 слово ~ 1.3 токена
 - Если точное число недоступно — запиши приблизительную оценку и добавь `"tokens_estimated": true`
 

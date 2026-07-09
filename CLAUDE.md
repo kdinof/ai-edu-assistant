@@ -1,13 +1,13 @@
 # AI Content Pipeline
 
-AI-пайплайн для автоматизации создания курсов OSNOVA.
+AI-пайплайн для автоматизации создания образовательных курсов.
 
 ## Pipeline
 
 ```
-Идея → Bootstrap → Deep Research → PRD → [Human Review] →
-→ Структура → [Методолог Review] → Модульный Research →
-→ Content Generation → [Validation] → Тесты → Lesson Summaries → Перевод (RU/UZ)
+Идея → Bootstrap (+референсы) → PRD → [Human Review] →
+→ Структура → [Методолог Review] →
+→ Content Generation → [Validation] → Тесты → Lesson Summaries → Перевод (опционально)
 ```
 
 ## Структура проекта
@@ -21,8 +21,7 @@ AI-пайплайн для автоматизации создания курс�
 │   │   ├── references/          # Pipeline stages, quality gates
 │   │   ├── stages/              # Инструкции для каждого этапа
 │   │   └── templates/           # Шаблоны артефактов
-│   ├── fact-check/              # Верификация технических утверждений
-│   └── perplexity-research/     # Perplexity API скрипты (Stage 02)
+│   └── fact-check/              # Верификация технических утверждений
 
 courses/                         # Результаты pipeline
 └── claude-cowork-office/        # Курс: Claude Cowork Office
@@ -30,17 +29,7 @@ courses/                         # Результаты pipeline
     ├── 05-module-research/
     ├── 06-content/
     └── research-aspects/
-
-foundation/                      # Долгосрочные reference-файлы
 ```
-
-## Reference файлы
-
-| Файл | Назначение |
-|------|-----------|
-| `foundation/course-design-values.md` | Ценности курсов (Stage 03) |
-| `foundation/brand_tone_of_voice.md` | Tone of voice (Stage 06) |
-| `.claude/skills/perplexity-research/` | Perplexity API скрипты (Stage 02) |
 
 ## Запуск
 

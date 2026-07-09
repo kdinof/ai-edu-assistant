@@ -5,11 +5,11 @@ allowed-tools: Read, Write, Edit, Glob, Agent, AskUserQuestion
 
 # /lesson-tests — Генерация тестов для уроков
 
-Запусти Stage 07 (Tests) для конкретного модуля курса.
+Запусти Stage 05 (Tests) для конкретного модуля курса. Вход: `04-content/module-{nn}/lesson-{nn}.md`. Выход: `05-tests/module-{nn}/lesson-{nn}-test.md`.
 
 ## Инструкции
 
-1. Прочитай инструкции стейджа: `.claude/skills/content-pipeline/stages/07-tests.md`
+1. Прочитай инструкции стейджа: `.claude/skills/content-pipeline/stages/05-tests.md`
 2. Следуй инструкциям стейджа
 
 ## Аргументы
@@ -23,7 +23,7 @@ allowed-tools: Read, Write, Edit, Glob, Agent, AskUserQuestion
 
 Если пользователь указал slug и модуль в аргументах ($ARGUMENTS) — используй их.
 
-Если указан только slug — найди модули в `courses/{slug}/06-content/` и спроси для какого модуля генерировать.
+Если указан только slug — найди модули в `courses/{slug}/04-content/` и спроси для какого модуля генерировать.
 
 Если аргументов нет — найди курсы в `courses/` и спроси для какого курса и модуля запускать.
 

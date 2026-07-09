@@ -1,5 +1,21 @@
 # Changelog
 
+## [2026-07-09]
+
+### Изменено
+- Пайплайн упрощён: убраны этапы Deep Research (Stage 02) и Module Research (было Stage 05) — единственным источником контента теперь являются референсы, загружаемые пользователем на Bootstrap. Удалён skill `perplexity-research` и команда `/course-research`
+- Референсные материалы на Stage 01 (Bootstrap) стали обязательными — этап не завершается без хотя бы одного файла или ссылки
+- Все стейджи перенумерованы: `02-prd → 02-prd`, `03-prd → 02-prd`, `04-structure → 03-structure`, `06-content → 04-content`, `07-tests → 05-tests`, `08-lesson-summaries → 06-lesson-summaries`, `09-translation → 07-translation`. В SKILL.md добавлен мэппинг для возобновления курсов со старой нумерацией
+- Bootstrap-опросник (по фидбоку продюсера после сравнения с брифом HR-команды) сокращён с 9 блоков до 6: из «Целевой аудитории» убраны боли/JTBD/барьеры/мотивация (осталось: кто, уровень, что уже знает); удалены секции «Финальный артефакт», «Инструменты и технологии», «Конкурентный контекст», «Локальный контекст и языки»; формат курса зафиксирован по умолчанию как «текст + интерактивные HTML-материалы» и больше не спрашивается
+- Stage 02 (PRD): инструменты теперь выводятся из референсов, а не из bootstrap; конкурентный анализ убран из PRD, шаблона и quality-gates
+- Stage 07 (Translation) стал опциональным: целевые языки спрашиваются у пользователя при запуске этапа, а не берутся из bootstrap/PRD; перевод поддерживает произвольные языки (не только узбекский)
+- Удалена привязка к бренду OSNOVA из CLAUDE.md, README, prd.md, roadmap.md и агентов (`git-changelog-push`, `lesson-summary-writer`, `uz-content-translator`) — пайплайн описан как платформо-независимый; пути agent-memory в агентах сделаны относительными
+- Обновлены quality-gates.md, pipeline-stages.md и команды `course-structure`/`lesson-tests` под новую нумерацию стейджей
+
+### Удалено
+- Удалена папка `foundation/` (`brand_tone_of_voice.md`, `course-design-values.md`) и связанные references в стейджах
+- Из README убраны требования Python 3.10+ и Perplexity API key, инструкции по настройке `.env`
+
 ## [2026-04-09]
 
 ### Добавлено
@@ -55,7 +71,7 @@
 
 ## 2026-03-13
 
-**Initial commit: AI Content Pipeline for OSNOVA courses**
+**Initial commit: AI Content Pipeline for online courses**
 
 - Инициализация проекта: pipeline, skills, commands, templates
 - Курс `claude-cowork-office`: stages 01-06 (bootstrap → content)

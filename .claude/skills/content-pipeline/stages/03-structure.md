@@ -1,24 +1,25 @@
-# Stage 04: Structure
+# Stage 03: Structure
 
 ## Задача
 
-Сгенерировать детальную структуру курса в **точном формате** существующих курсов OSNOVA. Результат — `04-structure.md`.
+Сгенерировать детальную структуру курса в **точном формате** шаблона `templates/course-structure.md`. Результат — `03-structure.md`.
 
 ## Инструкции
 
 ### 0. Roadmap
 
-Покажи Roadmap (формат из SKILL.md) с `🔄 04 Structure` как текущим этапом.
+Покажи Roadmap (формат из SKILL.md) с `🔄 03 Structure` как текущим этапом.
 
 ### 1. Загрузи контекст
 
 Прочитай:
-- `courses/{slug}/03-prd.md`
-- `courses/{slug}/02-research.md`
+- `courses/{slug}/01-bootstrap.md`
+- `courses/{slug}/02-prd.md`
+- Все файлы из `courses/{slug}/references/` (через Glob, Read) и `courses/{slug}/references/links.md`, если есть
 
 ### 2. Формат структуры
 
-Формат OSNOVA:
+Формат структуры:
 - **Паспорт курса** — таблица с параметрами
 - **Модули** — `### Модуль N: {название} ({XX} мин)`
 - **Цель модуля** — bold, одно предложение
@@ -70,7 +71,7 @@
 6. **Реалистичные обещания** — не обещай "экономию 80% времени" или "рост зарплаты на 50%". Используй конкретные измеримые примеры: "задача X: было 2 часа → стало 20 минут". Привязывай к конкретной задаче, а не к абстрактному результату.
 
 **Стиль буллетов (из reference):**
-- Конкретные примеры (локальные кейсы, Узбекистан где релевантно)
+- Конкретные примеры (локальные кейсы под целевую аудиторию курса, где релевантно)
 - Формулы и фреймворки
 - Антипаттерны ("Главная ошибка: ...")
 - Демонстрации ("Демонстрация: ...")
@@ -78,7 +79,7 @@
 ### 5. Сохранение
 
 ```
-courses/{slug}/04-structure.md
+courses/{slug}/03-structure.md
 ```
 
 ### 6. Human Gate 2: Методолог Review
@@ -87,17 +88,17 @@ courses/{slug}/04-structure.md
 ```json
 {
   "stages": {
-    "04-structure": {
+    "03-structure": {
       "status": "review_pending"
     }
   },
-  "current_stage": "04-structure"
+  "current_stage": "03-structure"
 }
 ```
 
 Покажи пользователю полную структуру.
 
-Покажи Roadmap с `⏳ 04 Structure` (review_pending).
+Покажи Roadmap с `⏳ 03 Structure` (review_pending).
 
 Используй **AskUserQuestion**:
 - question: "Структура курса готова к ревью. Ваше решение?"
@@ -110,9 +111,9 @@ courses/{slug}/04-structure.md
 ```json
 {
   "stages": {
-    "04-structure": { "status": "approved", "completed_at": "..." }
+    "03-structure": { "status": "approved", "completed_at": "..." }
   },
-  "current_stage": "05-module-research"
+  "current_stage": "04-content"
 }
 ```
 
